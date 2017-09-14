@@ -22,6 +22,8 @@ user> (conversion int? string? [n] (str n))
 #multifn[convert 0x4d4452b]
 user> (convert [int? string?] 123)
 "123"
+user> (convert int? string? 3.14)
+ExceptionInfo Input does not conform to clojure.core$int_QMARK_@1f24957a  clojure.core/ex-info (core.clj:4725)
 ```
 
 Using specs:
@@ -45,15 +47,6 @@ Using specs:
                            :dog/colour
                            :dog/height]))
 
-(s/def :fish/species keyword?)
-(s/def :fish/weight int?)
-(s/def :fish/height int?)
-(s/def :fish/name string?)
-(s/def ::fish (s/keys :req [:fish/species
-                            :fish/weight
-                            :fish/height
-                            :fish/name]))
-
 (conversion ::dog ::animal
             [dog]
             (-> dog
@@ -69,6 +62,8 @@ user> (convert ::dog ::animal
                 :dog/colour :colour/brown
                 :dog/height 45})
 #:animal{:weight 10, :height 45}
+user> (convert ::dog ::animal "Spot")
+ExceptionInfo Input does not conform to :user/dog  clojure.core/ex-info (core.clj:4725)
 ```
 
 ## License
