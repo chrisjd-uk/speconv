@@ -1,5 +1,8 @@
 # speconv
 
+[![Clojars Project](https://img.shields.io/clojars/v/chrisjd/speconv.svg)](https://clojars.org/chrisjd/speconv)
+[![Continuous Integration status](https://api.travis-ci.org/chrisjd-uk/speconv.png)](http://travis-ci.org/chrisjd-uk/speconv)
+
 A very simple Clojure library that provides a `convert` multimethod
 for doing data conversions and convenient macro for defining
 the supported conversions, `conversion`.
