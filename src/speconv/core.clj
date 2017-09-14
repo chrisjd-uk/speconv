@@ -6,10 +6,10 @@
   another."
   (fn [from to entity]
     (if (= from to)
-      :default
+      :same
       [from to])))
 
-(defmethod convert :default
+(defmethod convert :same
   [spec _ entity]
   (if (s/valid? spec entity)
     entity

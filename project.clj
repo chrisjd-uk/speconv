@@ -1,4 +1,4 @@
-(defproject chrisjd/speconv "0.1.0"
+(defproject chrisjd/speconv "0.1.1"
   :description "Provides a macro for building safe data conversion functions."
   :url "https://github.com/chrisjd-uk/speconv"
   :license {:name "Eclipse Public License"

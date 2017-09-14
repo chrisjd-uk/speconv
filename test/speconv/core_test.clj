@@ -66,3 +66,18 @@
                          :fish/weight 10
                          :fish/height 3
                          :fish/name "Freddy"}))))
+
+(deftest missing-conversion
+  (is (thrown? RuntimeException
+               (convert ::fish ::dog
+                        {:fish/species :fish.species/goldfish
+                         :fish/weight 10
+                         :fish/height 3
+                         :fish/name "Freddy"}))))
+
+(deftest automatic-support-for-same-types
+  (let [freddy {:fish/species :fish.species/goldfish
+                :fish/weight 10
+                :fish/height 3
+                :fish/name "Freddy"}]
+    (is (= freddy (convert ::fish ::fish freddy)))))
