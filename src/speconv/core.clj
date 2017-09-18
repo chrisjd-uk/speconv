@@ -22,13 +22,12 @@
   will conform to the `to` spec."
   [from to [entity-binding] & body]
   `(defmethod convert [~from ~to]
-     [_# _# entity#]
-     (if (s/valid? ~from entity#)
-       (let [result# (let [~entity-binding entity#]
-                       ~@body)]
+     [_# _# ~entity-binding]
+     (if (s/valid? ~from ~entity-binding)
+       (let [result# (do ~@body)]
          (if (s/valid? ~to result#)
            result#
            (throw (ex-info (str "Result does not conform to " ~to)
                            (s/explain-data ~to result#)))))
        (throw (ex-info (str "Input does not conform to " ~from)
-                       (s/explain-data ~from entity#))))))
+                       (s/explain-data ~from ~entity-binding))))))
