@@ -2,7 +2,8 @@
   (:require [clojure.spec.alpha :as s]
             [clojure.set :refer [rename-keys]]
             [clojure.test :refer :all]
-            [speconv.core :refer :all]))
+            [speconv.core :refer :all])
+  (:refer-clojure :exclude [import]))
 
 (s/def :animal/weight int?)
 (s/def :animal/height int?)
@@ -81,3 +82,53 @@
                 :fish/height 3
                 :fish/name "Freddy"}]
     (is (= freddy (convert ::fish ::fish freddy)))))
+
+(importer ::dog
+          [data]
+          {:dog/breed  (:breed data)
+           :dog/weight (:weight data)
+           :dog/colour (:colour data)
+           :dog/height (:height data)})
+
+(deftest import-normal-test
+  (let [in {:breed :border-collie
+            :weight 4000
+            :colour :colour/black
+            :height 30}
+        res (import ::dog in)]
+    (is (= {:dog/breed :border-collie
+            :dog/weight 4000
+            :dog/colour :colour/black
+            :dog/height 30}
+           res))))
+
+(deftest import-malformed-test
+  (let [in {:breed :border-collie
+            :weight 4000
+            :colour "black"
+            :height 30}]
+    (is (thrown? RuntimeException (import ::dog in)))))
+
+(exporter ::fish
+          [data]
+          {:species (name (:fish/species data))
+           :weight (:fish/weight data)
+           :height (:fish/height data)
+           :name (:fish/name data)})
+
+(deftest export-normal-test
+  (let [in {:fish/species :fish.species/goldfish
+            :fish/weight 10
+            :fish/height 3
+            :fish/name "Freddy"}
+        res (export ::fish in)]
+    (is (= {:species "goldfish"
+            :weight 10
+            :height 3
+            :name "Freddy"}))))
+
+(deftest export-malformed-test
+  (let [in {:fish/species :fish.species/goldfish
+            :fish/height 3
+            :fish/name "Freddy"}]
+    (is (thrown? RuntimeException (export ::fish in)))))
