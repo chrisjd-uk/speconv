@@ -11,6 +11,21 @@ Using the `conversion` macro, input data is validated against an input
 spec and output data produced by the body is validated against an
 output spec.
 
+
+## Installation
+
+Add the following to your `project.clj`:
+
+```
+[chrisjd/speconv "0.1.2"]
+```
+
+
+## Documentation
+
+- [API Docs](https://chrisjd-uk.github.io/speconv/)
+
+
 ## Examples
 
 Simple types:
@@ -66,6 +81,7 @@ user> (convert ::dog ::animal "Spot")
 ExceptionInfo Input does not validate as a :user/dog  clojure.core/ex-info (core.clj:4725)
 ```
 
+
 ## Import and Export
 
 Sometimes it's useful to only perform spec validation in one
@@ -106,6 +122,7 @@ user> (importer ::animal
 user> (import ::animal [10 35])
 #:animal{:weight 10, :height 35}
 ```
+
 
 ## License
 
