@@ -23,7 +23,7 @@ user> (conversion int? string? [n] (str n))
 user> (convert [int? string?] 123)
 "123"
 user> (convert int? string? 3.14)
-ExceptionInfo Input does not conform to clojure.core$int_QMARK_@1f24957a  clojure.core/ex-info (core.clj:4725)
+ExceptionInfo Input does not validate as a clojure.core$int_QMARK_@1f24957a  clojure.core/ex-info (core.clj:4725)
 ```
 
 Using specs:
@@ -63,7 +63,48 @@ user> (convert ::dog ::animal
                 :dog/height 45})
 #:animal{:weight 10, :height 45}
 user> (convert ::dog ::animal "Spot")
-ExceptionInfo Input does not conform to :user/dog  clojure.core/ex-info (core.clj:4725)
+ExceptionInfo Input does not validate as a :user/dog  clojure.core/ex-info (core.clj:4725)
+```
+
+## Import and Export
+
+Sometimes it's useful to only perform spec validation in one
+direction.
+
+For example, when loading data from a configuration file, we want to
+ensure that the data we end up with is well-formed in our data model,
+but we don't want to explicitly perform validation on the
+configuration file itself.  This is what the `importer` macro and
+`import` function is for.
+
+Or when exposing data from our data model over a web API, we want to
+hide the namespace-qualified keywords mapping our data and just expose
+a "simple" subset view.  This is what the `exporter` macro and
+`export` function is for.
+
+Examples:
+
+``` clojure
+user> (exporter ::dog
+                [data]
+                {:breed (name (:dog/breed data))
+                 :weight (str (:dog/weight data) "kg")})
+#multifn[export 0x28412494]
+user> (export ::dog
+              {:dog/breed :breed/alsation
+                :dog/weight 10
+                :dog/colour :colour/brown
+                :dog/height 45})
+{:breed "alsation", :weight "10kg"}
+```
+
+``` clojure
+user> (importer ::animal
+                [data]
+                (zipmap [:animal/weight :animal/height] data))
+#multifn[import 0x5d9c048a]
+user> (import ::animal [10 35])
+#:animal{:weight 10, :height 35}
 ```
 
 ## License
