@@ -83,7 +83,7 @@
                 :fish/name "Freddy"}]
     (is (= freddy (convert ::fish ::fish freddy)))))
 
-(importer ::dog
+(importer ::dog :config
           [data]
           {:dog/breed  (:breed data)
            :dog/weight (:weight data)
@@ -95,7 +95,7 @@
             :weight 4000
             :colour :colour/black
             :height 30}
-        res (import ::dog in)]
+        res (import ::dog :config in)]
     (is (= {:dog/breed :border-collie
             :dog/weight 4000
             :dog/colour :colour/black
@@ -107,9 +107,9 @@
             :weight 4000
             :colour "black"
             :height 30}]
-    (is (thrown? RuntimeException (import ::dog in)))))
+    (is (thrown? RuntimeException (import ::dog :config in)))))
 
-(exporter ::fish
+(exporter ::fish :api
           [data]
           {:species (name (:fish/species data))
            :weight (:fish/weight data)
@@ -121,7 +121,7 @@
             :fish/weight 10
             :fish/height 3
             :fish/name "Freddy"}
-        res (export ::fish in)]
+        res (export ::fish :api in)]
     (is (= {:species "goldfish"
             :weight 10
             :height 3
@@ -131,4 +131,4 @@
   (let [in {:fish/species :fish.species/goldfish
             :fish/height 3
             :fish/name "Freddy"}]
-    (is (thrown? RuntimeException (export ::fish in)))))
+    (is (thrown? RuntimeException (export ::fish :api in)))))

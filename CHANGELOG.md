@@ -1,6 +1,10 @@
 # Change Log
 
-## [Unreleased]
+## [0.1.3]
+- Add "context" argument to importers and exporters.  We typically
+  import and export from/to specific places and this is what the
+  context argument denotes.  Typical examples would be :config or
+  :api.
 
 ## [0.1.2]
 - Simplify body of `convert`.
@@ -18,6 +22,6 @@
 ## 0.1.0
 - Initial release.
 
-[Unreleased]: https://github.com/chrisjd-uk/speconv/compare/0.1.2...HEAD
+[0.1.3]: https://github.com/chrisjd-uk/speconv/compare/0.1.2...0.1.3
 [0.1.2]: https://github.com/chrisjd-uk/speconv/compare/0.1.1...0.1.2
 [0.1.1]: https://github.com/chrisjd-uk/speconv/compare/0.1.0...0.1.1

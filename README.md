@@ -17,7 +17,7 @@ output spec.
 Add the following to your `project.clj`:
 
 ```
-[chrisjd/speconv "0.1.2"]
+[chrisjd/speconv "0.1.3"]
 ```
 
 
@@ -101,12 +101,12 @@ a "simple" subset view.  This is what the `exporter` macro and
 Examples:
 
 ``` clojure
-user> (exporter ::dog
+user> (exporter ::dog :api
                 [data]
                 {:breed (name (:dog/breed data))
                  :weight (str (:dog/weight data) "kg")})
 #multifn[export 0x28412494]
-user> (export ::dog
+user> (export ::dog :api
               {:dog/breed :breed/alsation
                 :dog/weight 10
                 :dog/colour :colour/brown
@@ -114,14 +114,18 @@ user> (export ::dog
 {:breed "alsation", :weight "10kg"}
 ```
 
+Read this as "exporting a `::dog` **to** `:api`".
+
 ``` clojure
-user> (importer ::animal
+user> (importer ::animal :config
                 [data]
                 (zipmap [:animal/weight :animal/height] data))
 #multifn[import 0x5d9c048a]
-user> (import ::animal [10 35])
+user> (import ::animal :config [10 35])
 #:animal{:weight 10, :height 35}
 ```
+
+Read this as "importing an `::animal` **from** `:config`.
 
 
 ## License
