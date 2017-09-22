@@ -1,4 +1,4 @@
-(defproject chrisjd/speconv "0.1.3"
+(defproject chrisjd/speconv "0.1.4-SNAPSHOT"
   :description "Provides macros and utility functions for building
   safe data converters."
   :url "https://github.com/chrisjd-uk/speconv"
