@@ -1,5 +1,6 @@
 # speconv
 
+[![License](https://img.shields.io/github/license/chrisjd-uk/speconv.svg)](LICENSE)
 [![Clojars Project](https://img.shields.io/clojars/v/chrisjd/speconv.svg)](https://clojars.org/chrisjd/speconv)
 [![Build Status](https://travis-ci.org/chrisjd-uk/speconv.svg?branch=master)](https://travis-ci.org/chrisjd-uk/speconv)
 
