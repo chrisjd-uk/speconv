@@ -1,8 +1,8 @@
 # speconv
 
-[![License](https://img.shields.io/github/license/chrisjd-uk/speconv.svg)](LICENSE)
+[![License](https://img.shields.io/github/license/fzelogik/speconv.svg)](LICENSE)
 [![Clojars Project](https://img.shields.io/clojars/v/chrisjd/speconv.svg)](https://clojars.org/chrisjd/speconv)
-[![CircleCI](https://circleci.com/gh/chrisjd-uk/speconv.svg?style=svg)](https://circleci.com/gh/chrisjd-uk/speconv)
+[![CircleCI](https://circleci.com/gh/fzelogik/speconv.svg?style=svg)](https://circleci.com/gh/fzelogik/speconv)
 
 A very simple Clojure library that provides a `convert` multimethod
 for doing data conversions and convenient macro for defining
@@ -24,7 +24,7 @@ Add the following to your `project.clj`:
 
 ## Documentation
 
-- [API Docs](https://chrisjd-uk.github.io/speconv/)
+- [API Docs](https://fzelogik.github.io/speconv/)
 
 
 ## Examples

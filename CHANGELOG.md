@@ -25,7 +25,7 @@
 ## 0.1.0
 - Initial release.
 
-[Unreleased]: https://github.com/chrisjd-uk/speconv/compare/0.1.3...HEAD
-[0.1.3]: https://github.com/chrisjd-uk/speconv/compare/0.1.2...0.1.3
-[0.1.2]: https://github.com/chrisjd-uk/speconv/compare/0.1.1...0.1.2
-[0.1.1]: https://github.com/chrisjd-uk/speconv/compare/0.1.0...0.1.1
+[Unreleased]: https://github.com/fzelogik/speconv/compare/0.1.3...HEAD
+[0.1.3]: https://github.com/fzelogik/speconv/compare/0.1.2...0.1.3
+[0.1.2]: https://github.com/fzelogik/speconv/compare/0.1.1...0.1.2
+[0.1.1]: https://github.com/fzelogik/speconv/compare/0.1.0...0.1.1
